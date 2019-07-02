@@ -14,6 +14,7 @@ if File.exist?(db_config_file)
   DB = Sequel.connect(config)
 end
 
+#if connection exists, run migrations
 if DB
   Sequel::Migrator.run(DB, File.join(File.dirname(__FILE__), 'db', 'migrate'))
 end

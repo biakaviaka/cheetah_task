@@ -3,7 +3,6 @@ require "./boot"
 TCPServer.open('localhost', DEFAULT_PORT) do |server|
   puts "Listening on #{DEFAULT_PORT}. Press CTRL+C to cancel."
 
-  #if connection exists, run migrations
   loop do
     #serving multiple clients
     Thread.start(server.accept) do |client|

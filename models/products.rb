@@ -1,8 +1,6 @@
 class Product < Sequel::Model(DB)
 
   def self.get_products_by_producer(producer, page)
-    puts clean_string(producer)
-    puts page
     db_products = DB[:products].where(producer: clean_string(producer)).limit(PRODUCTS_PER_PAGE).offset(PRODUCTS_PER_PAGE * (page.to_i - 1))
     hashes = db_products.collect { |row|
       row.to_hash
